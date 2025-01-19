@@ -48,7 +48,7 @@ Salin kode dari file `main.ino` di repository ini ke editor Wokwi.
 3. Pastikan telah mendownload dan menjalankan Wokwi IoT Gateway
 
 ### 4. Menguji MQTT
-Gunakan **HiveMQ WebSocket Client** atau alat lain untuk menguji:
+Gunakan **[MQTTX APP WebSocket Client](https://mqttx.app/web)** atau alat lain untuk menguji:
 - **Publish Data Sensor**: Pantau data suhu dan kelembapan di topik:
   ```
   /UNI282/NamaAnda/data_sensor
