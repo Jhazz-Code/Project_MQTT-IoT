@@ -1,7 +1,7 @@
-# Integrasi IoT dengan Protokol MQTT (Sensor DHT & LED)
+# Project Integrasi IoT dengan Protokol MQTT (Studi Kasus: Sensor DHT & LED)
 
 ## Deskripsi Proyek
-Proyek ini adalah simulasi integrasi Internet of Things (IoT) menggunakan protokol MQTT untuk menghubungkan ESP32 dengan sensor DHT dan LED. Sistem ini memungkinkan:
+Proyek ini merupakan simulasi integrasi Internet of Things (IoT) menggunakan protokol MQTT untuk menghubungkan ESP32 dengan sensor DHT dan LED. Sistem ini memungkinkan:
 
 1. **Publikasi Data Sensor**: Data suhu dan kelembapan dari sensor DHT diterbitkan secara berkala ke broker MQTT.
 2. **Kontrol LED melalui MQTT**: LED dapat dihidupkan (ON) atau dimatikan (OFF) dengan mengirimkan pesan ke topik MQTT tertentu.
@@ -22,7 +22,7 @@ Simulasi ini dijalankan menggunakan [Wokwi](https://wokwi.com/), platform simula
 ## Teknologi yang Digunakan
 - **Bahasa Pemrograman**: C++
 - **Platform**: Wokwi IoT Simulator
-- **Protokol**: MQTT (Broker: `broker.hivemq.com`)
+- **Protokol**: MQTT (Broker: `broker.emqx.io`)
 - **Hardware Virtual**:
   - ESP32
   - Sensor DHT22
@@ -36,7 +36,7 @@ Simulasi ini dijalankan menggunakan [Wokwi](https://wokwi.com/), platform simula
 1. Buka [Wokwi](https://wokwi.com/projects/new/esp32).
 2. Tambahkan komponen berikut ke dalam canvas Wokwi:
    - **ESP32**
-   - **DHT22** (hubungkan ke pin D2 ESP32)
+   - **DHT22** (hubungkan ke pin D27 ESP32)
    - **LED** (hubungkan ke pin D17 ESP32)
 
 ### 2. Masukkan Kode
@@ -45,6 +45,7 @@ Salin kode dari file `main.ino` di repository ini ke editor Wokwi.
 ### 3. Jalankan Simulasi
 1. Klik tombol `Play` di Wokwi untuk menjalankan simulasi.
 2. Pastikan perangkat ESP32 terhubung ke WiFi simulator (`Wokwi-GUEST`).
+3. Pastikan telah mendownload dan menjalankan Wokwi IoT Gateway
 
 ### 4. Menguji MQTT
 Gunakan **HiveMQ WebSocket Client** atau alat lain untuk menguji:
@@ -65,7 +66,7 @@ Gunakan **HiveMQ WebSocket Client** atau alat lain untuk menguji:
 | **Topik**                             | **Fungsi**                              |
 |---------------------------------------|-----------------------------------------|
 | `/UNI282/NamaAnda/data_sensor`        | Publikasi data suhu dan kelembapan      |
-| `/UNI282/NamaAnda/aktuasi_led`        | Berlangganan untuk kontrol LED (ON/OFF) |
+| `/UNI282/NamaAnda/aktuasi_led`        | Subscribe untuk kontrol LED (ON/OFF)    |
 
 ---
 
@@ -82,7 +83,7 @@ Menghubungkan ke server MQTT... Terhubung!
 
 ### Data Sensor Diterbitkan:
 ```
-Menerbitkan pesan: {"suhu":25.50,"kelembapan":60.00}
+Publish pesan: {"suhu":25.50,"kelembapan":60.00}
 ```
 
 ### Kontrol LED:
@@ -100,14 +101,14 @@ LED dimatikan
 ---
 
 ## Catatan
-- Pastikan broker MQTT yang digunakan mendukung koneksi tanpa autentikasi jika menggunakan `broker.hivemq.com`.
+- Pastikan broker MQTT yang digunakan mendukung koneksi tanpa autentikasi jika menggunakan `broker.emqx.io`.
 - Ganti `NamaAnda` pada topik MQTT sesuai dengan nama atau identitas Anda.
 
 ---
 
 ## Referensi
 - [Wokwi IoT Simulator](https://wokwi.com/)
-- [HiveMQ WebSocket Client](https://www.hivemq.com/demos/websocket-client/)
+- [MQTTX APP WebSocket Client](https://mqttx.app/web)
 - [MQTT Protocol Documentation](https://mqtt.org/)
 
 ---
